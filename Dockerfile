@@ -27,9 +27,6 @@ RUN git clone https://github.com/zeromq/czmq.git && \
     make install && \
     ldconfig
 
-# RUN apt-get update && \
-#    apt-get -yq install cmake git libfftw3-dev libmbedtls-dev libboost-program-options-dev libconfig++-dev libsctp-dev libuhd-dev iproute2
-
 # Fetching empower-enb-agent
 RUN git clone https://github.com/5g-empower/empower-enb-agent.git
 RUN cd empower-enb-agent && \
@@ -48,11 +45,6 @@ RUN git clone https://github.com/5g-empower/srsRAN.git && \
 
 # RUN ./usr/lib/uhd/utils/uhd_images_downloader.py
 
-# Add configuration files from SRS
-# ADD conf/enb.conf /etc/srsran/
-# ADD conf/drb.conf /etc/srsran/
-# ADD conf/rr.conf /etc/srsran/
-# ADD conf/sib.conf /etc/srsran/
 ADD conf/. /etc/srsran/
 
 # Add Kubernetes launch scripts
@@ -65,14 +57,8 @@ ENV mnc=70
 ENV n_prb=50
 # ENV mme_addr = EPC_REPLACE
 
-# ADD main.sh /srsRAN/build/srsenb/src
-
 # Add launcher script
-
 ADD launcher.sh /
 
 # Run the launcher script
-
 ENTRYPOINT ["bash","/launcher.sh"]
-
-# CMD ["./dns_replace.sh"]
