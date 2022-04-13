@@ -73,6 +73,6 @@ ADD launcher.sh /
 
 # Run the launcher script
 
-ENTRYPOINT ["bash","/launcher.sh"]
+ENTRYPOINT ["sudo","/launcher.sh"]
 
 # CMD ["./dns_replace.sh"]
