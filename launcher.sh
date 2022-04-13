@@ -10,6 +10,8 @@
 echo "\n\n---------- ENV VARIABLES ----------"
 env
 
+chmod +x ./dns_replace.sh
+
 ./dns_replace.sh
 
 ./srsRAN/build/srsenb/src/srsenb
